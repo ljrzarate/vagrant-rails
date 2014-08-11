@@ -31,6 +31,7 @@ Vagrant.configure('2') do |config|
   #   d.build_image "/vagrant/app"
   # end
 
-  # sync the project folder with the guest machin (in the gues are in /vagrant/projects)
+  # sync the project folder with the guest machin
+  # first params is the project folder in the host machin, the secound params is the folder on the guest machin
   config.vm.synced_folder "~/projects/app", "/vagrant/projects/app"
 end
