@@ -71,7 +71,7 @@ class install_postgres {
 
   pg_database { $ar_databases:
     ensure   => present,
-    encoding => 'UTF8',
+    encoding => 'unicode',
     require  => Class['postgresql::server']
   }
 
@@ -124,6 +124,11 @@ package { ['libxml2', 'libxml2-dev', 'libxslt1-dev']:
 package { 'nodejs':
   ensure => installed
 }
+
+package { 'imagemagick':
+  ensure => installed
+}
+
 
 # --- Ruby ---------------------------------------------------------------------
 

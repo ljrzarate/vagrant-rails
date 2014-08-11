@@ -18,10 +18,19 @@ Vagrant.configure('2') do |config|
     v.customize ['set', :id, '--on-window-close', 'keep-running']
   end
 
+  config.vm.network :private_network, ip: "192.168.50.4"
+
   config.vm.network :forwarded_port, guest: 3000, host: 3000
 
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = 'puppet/manifests'
     puppet.module_path    = 'puppet/modules'
   end
+
+  # config.vm.provision "docker" do |d|
+  #   d.build_image "/vagrant/app"
+  # end
+
+  # sync the project folder with the guest machin (in the gues are in /vagrant/projects)
+  config.vm.synced_folder "~/projects/app", "/vagrant/projects/app"
 end
